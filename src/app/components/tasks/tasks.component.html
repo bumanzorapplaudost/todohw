@@ -1,0 +1,20 @@
+<div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <th>ID</th>
+            <th>Task</th>
+            <th>Assignee</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let task of tasks">
+                <td>{{ task.id }}</td>
+                <td>{{ task.task }}</td>
+                <td>{{ task.assignee }}</td>
+                <td>{{ task.status ? "Completed" : "Pending" }}</td>
+                <td><button class="btn-sm btn-danger">&times;</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
