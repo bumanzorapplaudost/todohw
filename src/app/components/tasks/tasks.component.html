@@ -1,7 +1,8 @@
-<div>
+<div class="container-fluid">
+    <app-form></app-form>
     <table class="table table-bordered table-striped">
         <thead>
-            <th>ID</th>
+            <th class="d-none d-md-block">ID</th>
             <th>Task</th>
             <th>Assignee</th>
             <th>Status</th>
@@ -9,7 +10,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let task of tasks">
-                <td>{{ task.id }}</td>
+                <td class="d-none d-md-block">{{ task.id }}</td>
                 <td>{{ task.task }}</td>
                 <td>{{ task.assignee }}</td>
                 <td>{{ task.status ? "Completed" : "Pending" }}</td>
