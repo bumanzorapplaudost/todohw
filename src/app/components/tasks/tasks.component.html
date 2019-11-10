@@ -6,6 +6,7 @@
             <th>Task</th>
             <th>Assignee</th>
             <th>Status</th>
+            <th>Creation date</th>
             <th>Actions</th>
         </thead>
         <tbody>
@@ -14,7 +15,8 @@
                 <td>{{ task.task }}</td>
                 <td>{{ task.assignee }}</td>
                 <td>{{ task.status ? "Completed" : "Pending" }}</td>
-                <td><button class="btn-sm btn-danger">&times;</button></td>
+                <td>{{ task.creation_date }}</td>
+                <td><button (click)="removeTask(task)" class="btn btn-sm btn-danger">&times;</button></td>
             </tr>
         </tbody>
     </table>
