@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { FormComponent } from './components/form/form.component';
 import { HeaderComponent } from './components/layout/header/header.component';
+import { AguinaldoComponent } from './components/aguinaldo/aguinaldo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TasksComponent,
     FormComponent,
-    HeaderComponent
+    HeaderComponent,
+    AguinaldoComponent
   ],
   imports: [
     BrowserModule,
