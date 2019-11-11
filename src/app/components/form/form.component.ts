@@ -25,6 +25,8 @@ export class FormComponent implements OnInit {
         if(this.description.length <= 100 && this.description != "") {
 
             document.querySelector("#description").classList.remove("is-invalid");
+            document.querySelector("#btn_submit").classList.remove("btn-dark");
+            document.querySelector("#btn_submit").classList.add("btn-default");
 
             let currentTasks = JSON.parse(localStorage.getItem("tasks"));
             let newID = this.getLastID(currentTasks) ? this.getLastID(currentTasks) + 1 : 1;
@@ -42,6 +44,11 @@ export class FormComponent implements OnInit {
 
             this.taskAdded.emit(task);
 
+            setTimeout(function(){
+                document.querySelector("#btn_submit").classList.remove("btn-default");
+                document.querySelector("#btn_submit").classList.add("btn-dark");
+            }, 300)
+
         }else {
             document.querySelector("#description").classList.add("is-invalid");
 
@@ -55,9 +62,7 @@ export class FormComponent implements OnInit {
     }
 
     getLastID(tasks) {
-        
         if(typeof tasks[0] !== "undefined") {
-            console.log("it is greater than 1")
             return tasks.sort((a,b) => {
                 return b.id - a.id;
             })[0].id;

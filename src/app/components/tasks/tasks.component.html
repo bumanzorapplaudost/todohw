@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <app-form (taskAdded)="taskAdded($event)" ></app-form>
-    <table class="table table-bordered table-striped">
+    <table class="table table-striped">
         <thead>
             <th class="d-none d-md-block">ID</th>
             <th>Task</th>
@@ -16,7 +16,12 @@
                 <td>{{ task.assignee }}</td>
                 <td>{{ task.status ? "Done" : "Pending" }}</td>
                 <td>{{ task.creation_date }}</td>
-                <td><button (click)="removeTask(task)" class="btn btn-sm btn-danger">&times;</button></td>
+                <td>
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-sm">Edit</button>
+                        <button (click)="removeTask(task)" class="btn btn-sm btn-danger">Remove</button>
+                    </div>
+                </td>
             </tr>
         </tbody>
     </table>
