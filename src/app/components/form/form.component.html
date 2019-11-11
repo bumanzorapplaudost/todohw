@@ -13,14 +13,14 @@
             <div class="col-sm-12 col-md-6">
                 <div class="form-group">
                     <label for=""><b>Task description:</b></label>
-                    <input type="text" name="description" [(ngModel)]="description" required placeholder="Enter your task description" class="form-control">
+                    <input type="text" id="description" name="description" [(ngModel)]="description" required placeholder="Enter your task description" class="form-control">
+                    <div class="invalid-feedback" id="itd"></div>
                 </div>
             </div>
             <div class="col-sm-12 col-md-6">
                 <div class="form-group">
                     <label for=""><b>Assignee:</b></label>
-                    <select name="assignee" [(ngModel)]="description" id="" class="form-control">
-                        <option value="">Select Assignee</option>
+                    <select name="assignee" [(ngModel)]="assignee" id="" class="form-control">
                         <option value="Frank">Frank</option>
                         <option value="John">John</option>
                         <option value="Alice">Alice</option>
