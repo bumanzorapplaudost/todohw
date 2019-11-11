@@ -16,7 +16,7 @@ After that you only need to add the modules to the `angular.json` file.
 
 The styles and scripts should look like this: 
 
-    `
+
     "styles": [
         "./node_modules/bootstrap/dist/css/bootstrap.css",
         "src/styles.css"
@@ -26,7 +26,7 @@ The styles and scripts should look like this:
         "./node_modules/popper.js/dist/umd/popper.js",
         "./node_modules/bootstrap/dist/js/bootstrap.js"
     ]
-    `
+    
 
 ## Code scaffolding
 
