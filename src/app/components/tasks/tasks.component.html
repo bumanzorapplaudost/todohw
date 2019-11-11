@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <app-form></app-form>
+    <app-form (taskAdded)="taskAdded($event)" ></app-form>
     <table class="table table-bordered table-striped">
         <thead>
             <th class="d-none d-md-block">ID</th>

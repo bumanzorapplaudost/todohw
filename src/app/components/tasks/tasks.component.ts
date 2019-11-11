@@ -14,7 +14,7 @@ export class TasksComponent implements OnInit {
     constructor() {
 
         let date = new Date();
-        
+        /* 
         let temptasks = [
             {
                 id: 1,
@@ -38,7 +38,7 @@ export class TasksComponent implements OnInit {
                 status: false
             },
         ];
-        localStorage.setItem("tasks", JSON.stringify(temptasks));
+        localStorage.setItem("tasks", JSON.stringify(temptasks)); */
 
         this.tasks = this.showTasks()
      }
@@ -48,7 +48,11 @@ export class TasksComponent implements OnInit {
     }
 
     showTasks() {
-        return JSON.parse(localStorage.getItem("tasks"));
+        return JSON.parse(localStorage.getItem("tasks")).sort((a,b) => {
+            if(a.creation_date < b.creation_date) return -1;
+            if(a.creation_date > b.creation_date) return 1;
+            return 0;
+        });
     }
 
     removeTask(task:Task) {
@@ -64,6 +68,10 @@ export class TasksComponent implements OnInit {
             this.tasks = this.showTasks();
 
         }
+    }
+
+    taskAdded(task) {
+        this.tasks = this.showTasks();
     }
 
 }

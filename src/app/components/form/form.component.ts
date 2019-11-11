@@ -8,6 +8,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 export class FormComponent implements OnInit {
 
+    @Output() taskAdded: EventEmitter<any> = new EventEmitter();
+
     description:string = "";
     assignee:string;
     status:boolean;
@@ -23,17 +25,22 @@ export class FormComponent implements OnInit {
         if(this.description.length <= 100 && this.description != "") {
 
             document.querySelector("#description").classList.remove("is-invalid");
+
+            let currentTasks = JSON.parse(localStorage.getItem("tasks"));
+            let newID = this.getLastID(currentTasks) ? this.getLastID(currentTasks) + 1 : 1;
+
             let task = {
-                id: Math.round(Math.random() * 500),
+                id: newID,
                 task: this.description,
                 assignee: this.assignee,
                 creation_date: date.toLocaleDateString() + " " + date.toLocaleTimeString(),
                 status: this.status,
             }
 
-            let currentTasks = JSON.parse(localStorage.getItem("tasks"));
             currentTasks.push(task);
             localStorage.setItem("tasks", JSON.stringify(currentTasks));
+
+            this.taskAdded.emit(task);
 
         }else {
             document.querySelector("#description").classList.add("is-invalid");
@@ -44,6 +51,18 @@ export class FormComponent implements OnInit {
             if(this.description.length > 100) {
                 document.querySelector("#itd").innerHTML = "The field <b>must</b> be 100 characters or less.";
             }
+        }
+    }
+
+    getLastID(tasks) {
+        
+        if(typeof tasks[0] !== "undefined") {
+            console.log("it is greater than 1")
+            return tasks.sort((a,b) => {
+                return b.id - a.id;
+            })[0].id;
+        }else {
+            return 0;
         }
     }
 }
