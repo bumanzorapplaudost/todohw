@@ -1,16 +1,31 @@
 <div class="container-fluid">
     <app-form (taskAdded)="taskAdded($event)" ></app-form>
+    <div class="row">
+        <div class="col-md-9 d-none d-md-block" >&nbsp;</div>
+        <div class="col-sm-12 col-md-3">
+            <div class="form-group">
+                    <form (ngSubmit)="searchMe()">
+                        <div class="input-group">
+                            <input class="form-control" name="query" [(ngModel)]="query" type="text" placeholder="Search tasks...">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-search"></i></span>
+                            </div>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div>
     <table class="table table-striped">
         <thead>
             <th class="d-none d-md-block">ID</th>
-            <th>Task</th>
+            <th>Task Description</th>
             <th>Assignee</th>
             <th>Status</th>
             <th>Creation date</th>
             <th>Actions</th>
         </thead>
         <tbody>
-            <tr *ngFor="let task of tasks">
+            <tr *ngFor="let task of tasks | filter: query">
                 <td class="d-none d-md-block">{{ task.id }}</td>
                 <td>{{ task.task }}</td>
                 <td>{{ task.assignee }}</td>
@@ -18,8 +33,8 @@
                 <td>{{ task.creation_date }}</td>
                 <td>
                     <div class="btn-group">
-                        <button class="btn btn-primary btn-sm">Edit</button>
-                        <button (click)="removeTask(task)" class="btn btn-sm btn-danger">Remove</button>
+                        <button class="btn btn-primary btn-sm"><i class="fa fa-pen"></i></button>
+                        <button (click)="removeTask(task)" class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button>
                     </div>
                 </td>
             </tr>

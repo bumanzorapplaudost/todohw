@@ -8,6 +8,7 @@ import { TasksComponent } from './components/tasks/tasks.component';
 import { FormComponent } from './components/form/form.component';
 import { HeaderComponent } from './components/layout/header/header.component';
 import { AguinaldoComponent } from './components/aguinaldo/aguinaldo.component';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AguinaldoComponent } from './components/aguinaldo/aguinaldo.component';
     TasksComponent,
     FormComponent,
     HeaderComponent,
-    AguinaldoComponent
+    AguinaldoComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

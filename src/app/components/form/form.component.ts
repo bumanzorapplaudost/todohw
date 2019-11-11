@@ -24,8 +24,7 @@ export class FormComponent implements OnInit {
 
     //Event Triggered when clicking the Create Task button
     addTodo() {
-
-
+        
         let date = new Date();
 
         if(this.description.length <= 100 && this.description != "") {

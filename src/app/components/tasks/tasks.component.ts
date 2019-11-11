@@ -9,38 +9,19 @@ styleUrls: ['./tasks.component.css']
 
 export class TasksComponent implements OnInit {
 
+    query:string = "";
+
     tasks:Task[];
 
     constructor() {
 
-        let date = new Date();
-        /* 
-        let temptasks = [
-            {
-                id: 1,
-                task: "Take out the trash",
-                assignee: "John",
-                creation_date: date.toLocaleDateString() + " " + date.toLocaleTimeString(),
-                status: false
-            },
-            {
-                id: 2,
-                task: "Wash the bathroom",
-                assignee: "Laura",
-                creation_date: date.toLocaleDateString() + " " + date.toLocaleTimeString(),
-                status: false
-            },
-            {
-                id: 3,
-                task: "Make the bed",
-                assignee: "",
-                creation_date: date.toLocaleDateString() + " " + date.toLocaleTimeString(),
-                status: false
-            },
-        ];
-        localStorage.setItem("tasks", JSON.stringify(temptasks)); */
+        if(!localStorage.getItem("tasks")) {
+            localStorage.setItem("tasks", JSON.stringify([]));
+        }
 
-        this.tasks = this.showTasks()
+        let date = new Date();
+        this.tasks = this.showTasks();
+
      }
 
     ngOnInit() {
@@ -48,6 +29,7 @@ export class TasksComponent implements OnInit {
     }
 
     showTasks() {
+
         return JSON.parse(localStorage.getItem("tasks")).sort((a,b) => {
             if(a.creation_date < b.creation_date) return -1;
             if(a.creation_date > b.creation_date) return 1;
