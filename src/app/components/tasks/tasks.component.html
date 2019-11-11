@@ -14,7 +14,7 @@
                 <td class="d-none d-md-block">{{ task.id }}</td>
                 <td>{{ task.task }}</td>
                 <td>{{ task.assignee }}</td>
-                <td>{{ task.status ? "Completed" : "Pending" }}</td>
+                <td>{{ task.status ? "Done" : "Pending" }}</td>
                 <td>{{ task.creation_date }}</td>
                 <td><button (click)="removeTask(task)" class="btn btn-sm btn-danger">&times;</button></td>
             </tr>

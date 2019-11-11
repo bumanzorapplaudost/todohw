@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm-12">&nbsp;</div>
     </div>
-    <form>
+    <form (ngSubmit)="addTodo()">
         <div class="row">
             <div class="col-sm-12 col-md-6">
                 <div class="form-group">
@@ -13,24 +13,25 @@
             <div class="col-sm-12 col-md-6">
                 <div class="form-group">
                     <label for=""><b>Task description:</b></label>
-                    <input type="text" required placeholder="Enter your task description" class="form-control">
+                    <input type="text" name="description" [(ngModel)]="description" required placeholder="Enter your task description" class="form-control">
                 </div>
             </div>
             <div class="col-sm-12 col-md-6">
                 <div class="form-group">
                     <label for=""><b>Assignee:</b></label>
-                    <select name="" id="" class="form-control">
+                    <select name="assignee" [(ngModel)]="description" id="" class="form-control">
                         <option value="">Select Assignee</option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
+                        <option value="Frank">Frank</option>
+                        <option value="John">John</option>
+                        <option value="Alice">Alice</option>
+                        <option value="Mary">Mary</option>
                     </select>
                 </div>
             </div>
             <div class="col-sm-12 col-md-6">
                 <label for=""><b>Status:</b></label>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox">
+                    <input name="status" class="form-check-input" [(ngModel)]="status" type="checkbox">
                     <label for="" class="form-check-label">Completed</label>
                 </div>
             </div>
