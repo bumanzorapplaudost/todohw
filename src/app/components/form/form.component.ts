@@ -7,9 +7,12 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 
 export class FormComponent implements OnInit {
-
+    
+    //The output should send send an event to the tasks list to update the table
     @Output() taskAdded: EventEmitter<any> = new EventEmitter();
 
+    //Declaring form fields
+    id:string = "";
     description:string = "";
     assignee:string;
     status:boolean;
@@ -19,17 +22,22 @@ export class FormComponent implements OnInit {
     ngOnInit() {
     }
 
+    //Event Triggered when clicking the Create Task button
     addTodo() {
+
+
         let date = new Date();
 
         if(this.description.length <= 100 && this.description != "") {
 
+            //Temporarily changing the button class
             document.querySelector("#description").classList.remove("is-invalid");
             document.querySelector("#btn_submit").classList.remove("btn-dark");
             document.querySelector("#btn_submit").classList.add("btn-default");
 
+            //Get 
             let currentTasks = JSON.parse(localStorage.getItem("tasks"));
-            let newID = this.getLastID(currentTasks) ? this.getLastID(currentTasks) + 1 : 1;
+            let newID = this.id.trim() == "" ? this.getLastID(currentTasks) + 1 : this.id.trim();
 
             let task = {
                 id: newID,
@@ -37,6 +45,13 @@ export class FormComponent implements OnInit {
                 assignee: this.assignee,
                 creation_date: date.toLocaleDateString() + " " + date.toLocaleTimeString(),
                 status: this.status,
+            }
+
+            if(this.id.trim() != "") {
+                //if the record exists then return the rest of them but the one we're editing.
+                currentTasks = currentTasks.filter(t => {
+                    return t.id !== this.id.trim();
+                });
             }
 
             currentTasks.push(task);
