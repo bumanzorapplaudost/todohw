@@ -1,4 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Subscription } from "rxjs";
+
+import { Task } from "../../models/Task";
+
 
 @Component({
     selector: 'app-form',
@@ -7,6 +11,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 
 export class FormComponent implements OnInit {
+
+    @Input() task:Task; 
     
     //The output should send send an event to the tasks list to update the table
     @Output() taskAdded: EventEmitter<any> = new EventEmitter();
@@ -24,7 +30,7 @@ export class FormComponent implements OnInit {
 
     //Event Triggered when clicking the Create Task button
     addTodo() {
-        
+
         let date = new Date();
 
         if(this.description.length <= 100 && this.description != "") {
@@ -84,4 +90,5 @@ export class FormComponent implements OnInit {
             return 0;
         }
     }
+
 }

@@ -1,5 +1,47 @@
-<div>
-    Aguinaldo component should be working now.
-    <br>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, fugiat sequi repellendus, ipsam, dignissimos eligendi consequatur impedit odio dolorem corrupti quibusdam delectus eaque? Iste est saepe asperiores vero excepturi mollitia.
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3 class="text-center"><i class="fa fa-arrow-right"></i> Aguinaldo Calculator</h3>
+        </div>
+    </div>
+    <form (ngSubmit)="calculateBonus()">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <div class="form-group">
+                    <label for=""><b>Salary:</b></label>
+                    <input type="number" id="salary" name="salary" [(ngModel)]="salary" class="form-control" required min="1" step="0.01">
+                    <div id="salary_invalid" class="invalid-feedback"></div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <div class="form-group">
+                    <label for=""><b>Years of work:</b></label>
+                    <input type="number" id="years" name="years" [(ngModel)]="years" required class="form-control" min="0" max="34">
+                    <div id="years_invalid" class="invalid-feedback"></div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <div class="form-group">
+                    <label for=""><b>Days worked:</b></label>
+                    <input type="number" id="days" name="days" [(ngModel)]="days" required class="form-control" min="0" max="34">
+                    <div id="days_invalid" class="invalid-feedback"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group text-center">
+                    <button class="btn btn-success">Calculate Aguinaldo</button>
+                </div>
+            </div>
+        </div>
+        <div class="row"><div class="col-sm-12">&nbsp;</div></div>
+        <div class="row justify-content-md-center">
+            <div id="hidden" class="d-none col-sm-12 col-md-4">
+                <div class="card">
+                    <div id="results" class="card-body bg-light"></div>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>

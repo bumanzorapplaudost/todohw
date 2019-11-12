@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Task } from "../../models/Task";
 
 @Component({
@@ -8,6 +8,8 @@ styleUrls: ['./tasks.component.css']
 })
 
 export class TasksComponent implements OnInit {
+
+    @Output() sendTaskToEdit: EventEmitter<Task> = new EventEmitter();
 
     query:string = "";
 
