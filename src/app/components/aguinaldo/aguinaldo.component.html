@@ -31,7 +31,10 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-group text-center">
-                    <button class="btn btn-success">Calculate Aguinaldo</button>
+                    <div class="btn-group">
+                        <button class="btn btn-success">Calculate Aguinaldo</button>
+                        <input type="button" (click)="cleanIt()" class="btn btn-dark" value='Clear form' />
+                    </div>
                 </div>
             </div>
         </div>
@@ -39,7 +42,20 @@
         <div class="row justify-content-md-center">
             <div id="hidden" class="d-none col-sm-12 col-md-4">
                 <div class="card">
-                    <div id="results" class="card-body bg-light"></div>
+                    <div id="results" class="card-body bg-light">
+                        <h4 class="text-center">Calculo de Aguinaldo</h4>
+                        <div class="row">
+                            <div class="col-sm-6"><b>Base Salary: </b></div>
+                            <div class="col-sm-6">${{calculatedResults.salary}}</div>
+                            <div class="col-sm-6"><b>Years Worked: </b></div>
+                            <div class="col-sm-6">{{calculatedResults.years}}</div>
+                            <div class="col-sm-6"><b>Days Worked: </b></div>
+                            <div class="col-sm-6">{{calculatedResults.days}}</div>
+                            <div class="col-sm-12">&nbsp;</div>
+                            <div class="col-sm-6"><h5><b>Aguinaldo:</b></h5></div>
+                            <div class="col-sm-6"><h5>${{calculatedResults.paidAmount.toFixed(2)}}</h5></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
